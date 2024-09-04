@@ -1,0 +1,47 @@
+{
+    "name": "anthonyedmonds/laravel-database-log",
+    "description": "Store your Laravel logs in the database",
+    "keywords": ["laravel", "monolog", "database", "logging"],
+    "type": "library",
+    "homepage": "https://github.com/AnthonyEdmonds/laravel-database-log",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anthony Edmonds",
+            "email": "contact@anthonyedmonds.me",
+            "homepage": "https://anthonyedmonds.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/support": "^11"
+    },
+    "require-dev": {
+        "laravel/pint": "^1",
+        "orchestra/testbench": "^9",
+        "phpunit/phpunit": "^11"
+    },
+    "autoload": {
+        "psr-4": {
+            "AnthonyEdmonds\\LaravelDatabaseLog\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AnthonyEdmonds\\LaravelDatabaseLog\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AnthonyEdmonds\\LaravelDatabaseLog\\DatabaseLogServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

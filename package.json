@@ -1,0 +1,22 @@
+{
+    "name": "laravel-database-log",
+    "description": "Store your Laravel logs in the database",
+    "keywords": [
+        "laravel",
+        "monolog",
+        "database",
+        "logging"
+    ],
+    "author": "Anthony Edmonds",
+    "license": "MIT",
+    "homepage": "https://github.com/AnthonyEdmonds/laravel-database-log",
+    "scripts": {
+        "larastan": "php vendor/bin/phpstan analyse --memory-limit 512M",
+        "pint": "php ./vendor/bin/pint --preset=per",
+        "prepare": "husky install",
+        "test": "php vendor/bin/phpunit"
+    },
+    "devDependencies": {
+        "husky": "^8"
+    }
+}
