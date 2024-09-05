@@ -27,8 +27,8 @@ class Handler extends AbstractProcessingHandler
         /** @var Log $model */
         $model = new $class();
         $model->channel = $record->channel;
-        $model->logged_at = Carbon::createFromImmutable($record->datetime);
         $model->level = $record->level->name;
+        $model->logged_at = Carbon::createFromImmutable($record->datetime);
         $model->message = $record->message;
         $model->interpretContext($record->context);
         $model->interpretExtra($record->extra);

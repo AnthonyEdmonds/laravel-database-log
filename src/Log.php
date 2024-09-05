@@ -2,8 +2,10 @@
 
 namespace AnthonyEdmonds\LaravelDatabaseLog;
 
+use AnthonyEdmonds\LaravelDatabaseLog\Tests\Database\Factories\LogFactory;
 use Carbon\Carbon;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Throwable;
 
@@ -11,10 +13,10 @@ use Throwable;
  * @property string $channel
  * @property ?int $code
  * @property ?string $file
- * @property Carbon $logged_at
  * @property int $id
  * @property string $level
  * @property ?int $line
+ * @property Carbon $logged_at
  * @property string $message
  * @property ?string $trace
  *
@@ -27,10 +29,15 @@ use Throwable;
  */
 class Log extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'channel',
+        'code',
+        'file',
         'level',
         'message',
+        'trace',
     ];
 
     protected $guarded = [
@@ -56,6 +63,11 @@ class Log extends Model
             'line' => 'int',
             'logged_at' => 'datetime',
         ];
+    }
+
+    protected static function newFactory(): LogFactory
+    {
+        return new LogFactory();
     }
 
     // Scopes
@@ -105,11 +117,11 @@ class Log extends Model
         //
     }
 
-    public function parseException(Throwable $exception): void
+    protected function parseException(Throwable $exception): void
     {
         $this->code = $exception->getCode();
         $this->file = $exception->getFile();
         $this->line = $exception->getLine();
-        $this->trace =  $exception->getTraceAsString();
+        $this->trace = $exception->getTraceAsString();
     }
 }

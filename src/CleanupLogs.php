@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class CleanupLogs extends Command implements PromptsForMissingInput
 {
-    protected $signature = 'database-log:cleanup {--channel=} {--cutoff=}';
+    protected $signature = 'database-log:cleanup {channel} {cutoff}';
 
     protected $description = 'Remove Logs from the database on a specific channel which are older than the cutoff in days';
 
@@ -29,7 +29,7 @@ class CleanupLogs extends Command implements PromptsForMissingInput
 
         $deleted = DB::table(config('database-log.table'))
             ->where('channel', '=', $channel)
-            ->where('logged_at', '>', $expiryDate)
+            ->where('logged_at', '<', $expiryDate)
             ->delete();
 
         $this->info("Removed $deleted Logs!");

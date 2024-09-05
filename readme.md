@@ -52,15 +52,15 @@ The configuration found at `config/database-log.php` allows you to customise the
 
 The `database-log:cleanup` command is provided to remove old logs from the database as required. It takes two parameters:
 
-| Parameter  | Type   | Purpose                                               |
-|------------|--------|-------------------------------------------------------|
-| --channel  | string | The name of the channel to delete logs from           |
-| --cutoff   | int    | The number of days after which logs should be removed |
+| Parameter | Type   | Purpose                                               |
+|-----------|--------|-------------------------------------------------------|
+| channel   | string | The name of the channel to delete logs from           |
+| cutoff    | int    | The number of days after which logs should be removed |
 
 You can schedule the command to run automatically by adding it to your scheduler:
 
 ```
-Schedule::command('database-log:cleanup --channel=my_channel --cutoff=90')->daily();
+Schedule::command('database-log:cleanup my_channel 90')->daily();
 ```
 
 ## Usage

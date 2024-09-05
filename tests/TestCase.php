@@ -3,11 +3,13 @@
 namespace AnthonyEdmonds\LaravelDatabaseLog\Tests;
 
 use AnthonyEdmonds\LaravelDatabaseLog\DatabaseLogServiceProvider;
+use AnthonyEdmonds\LaravelDatabaseLog\Tests\Traits\AssertsResults;
 use Illuminate\Foundation\Testing\WithFaker;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
+    use AssertsResults;
     use WithFaker;
 
     protected function setUp(): void
