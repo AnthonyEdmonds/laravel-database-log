@@ -37,11 +37,20 @@ class Handler extends AbstractProcessingHandler
             $model->save();
         } catch (Throwable $exception) {
             if ($this->fallback !== null) {
-                IlluminateLog::channel($this->fallback)
-                    ->log($record->level, $record->message, $record->context);
+                $channel = IlluminateLog::channel($this->fallback);
 
-                IlluminateLog::channel($this->fallback)
-                    ->emergency('Laravel Database Log failed to write', ['exception' => $exception]);
+                match ($record->level->name) {
+                    'Alert' => $channel->alert($record->message, $record->context),
+                    'Critical' => $channel->critical($record->message, $record->context),
+                    'Debug' => $channel->debug($record->message, $record->context),
+                    'Emergency' => $channel->emergency($record->message, $record->context),
+                    'Info' => $channel->info($record->message, $record->context),
+                    'Notice' => $channel->notice($record->message, $record->context),
+                    'Warning' => $channel->warning($record->message, $record->context),
+                    default => $channel->error($record->message, $record->context),
+                };
+
+                $channel->emergency('Laravel Database Log failed to write', ['exception' => $exception]);
             }
         }
     }

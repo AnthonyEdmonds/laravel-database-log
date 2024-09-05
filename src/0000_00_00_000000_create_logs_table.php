@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create(config('database-log.table', 'logs'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('channel');
             $table->dateTime('logged_at');
@@ -24,6 +24,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('logs');
+        Schema::dropIfExists(config('database-log.table', 'logs'));
     }
 };

@@ -4,4 +4,5 @@ use AnthonyEdmonds\LaravelDatabaseLog\Log;
 
 return [
     'model' => Log::class,
+    'table' => 'logs',
 ];
