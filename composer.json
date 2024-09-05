@@ -18,6 +18,7 @@
         "illuminate/support": "^11"
     },
     "require-dev": {
+        "larastan/larastan": "^2",
         "laravel/pint": "^1",
         "orchestra/testbench": "^9",
         "phpunit/phpunit": "^11"
