@@ -9,7 +9,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('logs', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('channel');
+            $table->dateTime('logged_at');
+            $table->string('level');
+            $table->string('message');
         });
     }
 
