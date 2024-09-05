@@ -13,6 +13,12 @@ return new class extends Migration {
             $table->dateTime('logged_at');
             $table->string('level');
             $table->string('message');
+
+            // Context
+            $table->string('file')->nullable();
+            $table->unsignedSmallInteger('code')->nullable();
+            $table->unsignedSmallInteger('line')->nullable();
+            $table->text('trace')->nullable();
         });
     }
 

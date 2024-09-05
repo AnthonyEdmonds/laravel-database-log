@@ -4,7 +4,6 @@ namespace AnthonyEdmonds\LaravelDatabaseLog;
 
 use Illuminate\Support\ServiceProvider;
 
-// TODO Register migration
 class DatabaseLogServiceProvider extends ServiceProvider
 {
     public function register(): void
