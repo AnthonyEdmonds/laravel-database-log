@@ -37,7 +37,7 @@ Store your Laravel logs in the database!
     ],
     ```
     * The `fallback` parameter is optional, and can point to a log to use in case the database cannot be reached.
-    * The `level` parameter be excluded if desired.
+    * The `level` parameter can be excluded if desired.
 
 ## Configuration
 
