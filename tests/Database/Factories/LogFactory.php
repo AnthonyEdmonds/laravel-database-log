@@ -26,6 +26,7 @@ class LogFactory extends Factory
             ]),
             'logged_at' => $this->faker->datetime(),
             'message' =>  $this->faker->sentence(),
+            'server' => $this->faker->word(),
             'trace' => $this->faker->paragraph(),
         ];
     }
