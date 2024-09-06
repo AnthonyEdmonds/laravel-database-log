@@ -10,6 +10,7 @@ return new class extends Migration {
     {
         Schema::create(config('database-log.table', 'logs'), function (Blueprint $table) {
             $table->increments('id');
+            $table->string('server');
             $table->string('channel');
             $table->dateTime('logged_at');
             $table->string('level');

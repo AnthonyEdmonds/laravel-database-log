@@ -53,6 +53,7 @@ class WriteTest extends TestCase
             'line' => 12,
             'logged_at' => $this->now->toDateTimeString(),
             'message' => 'My message',
+            'server' => gethostname(),
         ]);
     }
 

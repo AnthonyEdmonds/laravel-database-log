@@ -18,11 +18,13 @@ use Throwable;
  * @property ?int $line
  * @property Carbon $logged_at
  * @property string $message
+ * @property string $server
  * @property ?string $trace
  *
  * @method static Builder byCode(int $code)
  * @method static Builder byDate(Carbon|string $date)
  * @method static Builder byFile(string $file)
+ * @method static Builder byServer(string $server)
  * @method static Builder byLevel(string $level)
  * @method static Builder byLine(int $line)
  * @method static Builder onChannel(string $channel)
@@ -37,6 +39,7 @@ class Log extends Model
         'file',
         'level',
         'message',
+        'server',
         'trace',
     ];
 
@@ -94,6 +97,11 @@ class Log extends Model
     public function scopeByLine(Builder $query, int $line): Builder
     {
         return $query->where('line', '=', $line);
+    }
+
+    public function scopeByServer(Builder $query, string $server): Builder
+    {
+        return $query->where('server', '=', $server);
     }
 
     public function scopeOnChannel(Builder $query, string $channel): Builder
