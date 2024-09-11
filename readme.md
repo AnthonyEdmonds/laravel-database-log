@@ -15,7 +15,7 @@ Store your Laravel logs in the database!
         ...
         AnthonyEdmonds\GovukLaravel\Providers\GovukServiceProvider::class,
         ...
-    ],
+    ];
     ```
 3. Publish the database migration and config files using Artisan:
     ```
