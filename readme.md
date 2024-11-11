@@ -54,13 +54,12 @@ The `database-log:cleanup` command is provided to remove old logs from the datab
 
 | Parameter | Type   | Purpose                                               |
 |-----------|--------|-------------------------------------------------------|
-| channel   | string | The name of the channel to delete logs from           |
 | cutoff    | int    | The number of days after which logs should be removed |
 
 You can schedule the command to run automatically by adding it to your scheduler:
 
 ```
-Schedule::command('database-log:cleanup my_channel 90')->daily();
+Schedule::command('database-log:cleanup 90')->daily();
 ```
 
 ## Usage
