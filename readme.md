@@ -6,14 +6,14 @@ Store your Laravel logs in the database!
 
 1. Add the library using Composer:
     ```
-    composer require anthonyedmonds\laravel-database-log
+    composer require anthonyedmonds/laravel-database-log
     ```
 2. The service provider will be automatically registered.
     If required, you can manually register the service provider by adding it to your `bootstrap/providers.php`:
     ```
     return [
         ...
-        AnthonyEdmonds\GovukLaravel\Providers\GovukServiceProvider::class,
+        AnthonyEdmonds\LaravelDatabaseLog\DatabaseLogServiceProvider::class,
         ...
     ];
     ```
