@@ -36,7 +36,7 @@ class HandleTest extends TestCase
             ->expectsOutput('Removing Logs older than 30 days...')
             ->expectsOutput('Removed 1 Logs!');
 
-        $this->assertDatabaseHas($this->toKeep);
-        $this->assertDatabaseMissing($this->toDelete);
+        $this->assertDatabaseHas('logs', $this->toKeep->toArray());
+        $this->assertDatabaseMissing('logs', $this->toDelete->toArray());
     }
 }

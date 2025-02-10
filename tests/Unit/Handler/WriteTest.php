@@ -67,7 +67,6 @@ class WriteTest extends TestCase
 
         /** @var LogManager|Mock $mock */
         $mock = Log::partialMock();
-        $mock->setApplication(app());
 
         $mock->expects('channel')->with('my_fallback')->andReturnSelf();
 
