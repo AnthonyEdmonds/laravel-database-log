@@ -27,7 +27,7 @@ Store your Laravel logs in the database!
         ...
         'database' => [
             'driver' => 'monolog',
-            'handler' => AnthonyEdmonds\LaravalDatabaseLog\Handler::class,
+            'handler' => AnthonyEdmonds\LaravelDatabaseLog\Handler::class,
             'with' => [
                 'fallback' => 'daily',
             ],
