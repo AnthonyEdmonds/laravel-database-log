@@ -50,16 +50,34 @@ The configuration found at `config/database-log.php` allows you to customise the
 
 ## Cleaning up old logs
 
-The `database-log:cleanup` command is provided to remove old logs from the database as required. It takes two parameters:
+### Job
 
-| Parameter | Type   | Purpose                                               |
-|-----------|--------|-------------------------------------------------------|
-| cutoff    | int    | The number of days after which logs should be removed |
+A Laravel Job is provided to cleanup old logs.
 
-You can schedule the command to run automatically by adding it to your scheduler:
+Add the job to your schedule, providing the number of days after which logs should be deleted.
+
+```php
+$schedule
+    ->job(new CleanupLogsJob())
+    ->daily();
+```
+
+### Command
+
+The `database-log:cleanup` command is also provided to remove old logs from the database as required.
+
+You can provide the number of days after which logs should be deleted as part of the command.
+
+```bash
+php artisan database-log:cleanup 14
+```
+
+You can also schedule the command to run automatically by adding it to your scheduler:
 
 ```
-Schedule::command('database-log:cleanup 90')->daily();
+$schedule
+   ->command('database-log:cleanup 90')
+   ->daily();
 ```
 
 ## Usage

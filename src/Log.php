@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Throwable;
 
 /**
@@ -110,6 +111,17 @@ class Log extends Model
     }
 
     // Utilities
+    public static function cleanup(int $daysOld): int
+    {
+        $expiryDate = Carbon::today()
+            ->subDays($daysOld)
+            ->toDateTimeString();
+
+        return DB::table(config('database-log.table'))
+            ->where('logged_at', '<', $expiryDate)
+            ->delete();
+    }
+
     public function interpretContext(array $context): void
     {
         if (

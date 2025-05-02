@@ -2,10 +2,8 @@
 
 namespace AnthonyEdmonds\LaravelDatabaseLog;
 
-use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
-use Illuminate\Support\Facades\DB;
 
 class CleanupLogs extends Command implements PromptsForMissingInput
 {
@@ -19,15 +17,7 @@ class CleanupLogs extends Command implements PromptsForMissingInput
         $cutoff = $this->argument('cutoff');
 
         $this->info("Removing Logs older than $cutoff days...");
-
-        $expiryDate = Carbon::today()
-            ->subDays($cutoff)
-            ->toDateTimeString();
-
-        $deleted = DB::table(config('database-log.table'))
-            ->where('logged_at', '<', $expiryDate)
-            ->delete();
-
+        $deleted = Log::cleanup($cutoff);
         $this->info("Removed $deleted Logs!");
     }
 
