@@ -8,6 +8,7 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Throwable;
 
 /**
@@ -108,6 +109,14 @@ class Log extends Model
     public function scopeOnChannel(Builder $query, string $channel): Builder
     {
         return $query->where('channel', '=', $channel);
+    }
+
+    // Setters
+    public function setMessageAttribute(string $message): void
+    {
+        $this->attributes['message'] = Str::of($message)
+            ->limit(188)
+            ->toString();
     }
 
     // Utilities
