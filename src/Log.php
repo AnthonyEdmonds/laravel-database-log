@@ -148,7 +148,12 @@ class Log extends Model
 
     protected function parseException(Throwable $exception): void
     {
-        $this->code = $exception->getCode();
+        $code = $exception->getCode();
+
+        $this->code = is_int($code) === true
+            ? $code
+            : null;
+
         $this->file = $exception->getFile();
         $this->line = $exception->getLine();
         $this->trace = $exception->getTraceAsString();
